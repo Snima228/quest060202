@@ -1,0 +1,1185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище KinoModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="acess_right">
+          <Key>
+            <PropertyRef Name="login" />
+          </Key>
+          <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar(max)" />
+          <Property Name="soled" Type="binary" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="adress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Home" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id_street" Type="int" />
+        </EntityType>
+        <EntityType Name="area">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_adress" Type="int" />
+          <Property Name="Id_type_area" Type="int" />
+          <Property Name="Rental_cost" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="Capacity" Type="int" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="category_expense">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Second_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Bet" Type="decimal" Precision="2" Scale="1" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="13" />
+          <Property Name="Id_post" Type="int" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Photo" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="expenses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sum" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Id_project" Type="int" />
+          <Property Name="Id_employee" Type="int" />
+          <Property Name="Id_category_expense" Type="int" />
+        </EntityType>
+        <EntityType Name="film_crew">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_employee" Type="int" />
+          <Property Name="Id_project" Type="int" />
+        </EntityType>
+        <EntityType Name="genre">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="genre_in_project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_genre" Type="int" />
+          <Property Name="Id_project" Type="int" />
+        </EntityType>
+        <EntityType Name="post">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Budget" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="Date_start" Type="date" />
+          <Property Name="Date_end" Type="date" />
+          <Property Name="Id_status_project" Type="int" />
+          <Property Name="Id_category" Type="int" />
+          <Property Name="Target_audience" Type="int" />
+        </EntityType>
+        <EntityType Name="rental">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_project" Type="int" />
+          <Property Name="Release_date" Type="date" />
+          <Property Name="Number_of_cinemas" Type="int" />
+          <Property Name="Collections" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="Audience_rating" Type="decimal" Precision="2" Scale="1" />
+        </EntityType>
+        <EntityType Name="shooting_schedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Time" Type="time" Precision="2" Nullable="false" />
+          <Property Name="Id_area" Type="int" />
+          <Property Name="Id_project" Type="int" />
+        </EntityType>
+        <EntityType Name="status_project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="street">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id_city" Type="int" />
+        </EntityType>
+        <EntityType Name="type_area">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_adress_street">
+          <End Role="street" Type="Self.street" Multiplicity="0..1" />
+          <End Role="adress" Type="Self.adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="street">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="adress">
+              <PropertyRef Name="Id_street" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_area_adress">
+          <End Role="adress" Type="Self.adress" Multiplicity="0..1" />
+          <End Role="area" Type="Self.area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="area">
+              <PropertyRef Name="Id_adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_area_type_area">
+          <End Role="type_area" Type="Self.type_area" Multiplicity="0..1" />
+          <End Role="area" Type="Self.area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_area">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="area">
+              <PropertyRef Name="Id_type_area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_employee_acess_right">
+          <End Role="acess_right" Type="Self.acess_right" Multiplicity="0..1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="acess_right">
+              <PropertyRef Name="login" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_employee_post">
+          <End Role="post" Type="Self.post" Multiplicity="0..1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="post">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="Id_post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_expenses_category_expense">
+          <End Role="category_expense" Type="Self.category_expense" Multiplicity="0..1" />
+          <End Role="expenses" Type="Self.expenses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category_expense">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="expenses">
+              <PropertyRef Name="Id_category_expense" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_expenses_employee">
+          <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="expenses" Type="Self.expenses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="expenses">
+              <PropertyRef Name="Id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_expenses_project">
+          <End Role="project" Type="Self.project" Multiplicity="0..1" />
+          <End Role="expenses" Type="Self.expenses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="expenses">
+              <PropertyRef Name="Id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_film_crew_employee">
+          <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="film_crew" Type="Self.film_crew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="film_crew">
+              <PropertyRef Name="Id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_film_crew_project">
+          <End Role="project" Type="Self.project" Multiplicity="0..1" />
+          <End Role="film_crew" Type="Self.film_crew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="film_crew">
+              <PropertyRef Name="Id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_genre_in_project_genre">
+          <End Role="genre" Type="Self.genre" Multiplicity="0..1" />
+          <End Role="genre_in_project" Type="Self.genre_in_project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genre">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="genre_in_project">
+              <PropertyRef Name="Id_genre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_genre_in_project_project">
+          <End Role="project" Type="Self.project" Multiplicity="0..1" />
+          <End Role="genre_in_project" Type="Self.genre_in_project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="genre_in_project">
+              <PropertyRef Name="Id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_category">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="project" Type="Self.project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project">
+              <PropertyRef Name="Id_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_status_project">
+          <End Role="status_project" Type="Self.status_project" Multiplicity="0..1" />
+          <End Role="project" Type="Self.project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status_project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project">
+              <PropertyRef Name="Id_status_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rental_project">
+          <End Role="project" Type="Self.project" Multiplicity="0..1" />
+          <End Role="rental" Type="Self.rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="rental">
+              <PropertyRef Name="Id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shooting_schedule_area">
+          <End Role="area" Type="Self.area" Multiplicity="0..1" />
+          <End Role="shooting_schedule" Type="Self.shooting_schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="area">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="shooting_schedule">
+              <PropertyRef Name="Id_area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shooting_schedule_project">
+          <End Role="project" Type="Self.project" Multiplicity="0..1" />
+          <End Role="shooting_schedule" Type="Self.shooting_schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="shooting_schedule">
+              <PropertyRef Name="Id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_street_city">
+          <End Role="city" Type="Self.city" Multiplicity="0..1" />
+          <End Role="street" Type="Self.street" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="street">
+              <PropertyRef Name="Id_city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище KinoModelContainer">
+          <EntitySet Name="acess_right" EntityType="Self.acess_right" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="adress" EntityType="Self.adress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="area" EntityType="Self.area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category_expense" EntityType="Self.category_expense" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="city" EntityType="Self.city" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="expenses" EntityType="Self.expenses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="film_crew" EntityType="Self.film_crew" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="genre" EntityType="Self.genre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="genre_in_project" EntityType="Self.genre_in_project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="post" EntityType="Self.post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="project" EntityType="Self.project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rental" EntityType="Self.rental" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shooting_schedule" EntityType="Self.shooting_schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status_project" EntityType="Self.status_project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="street" EntityType="Self.street" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_area" EntityType="Self.type_area" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_adress_street" Association="Self.FK_adress_street">
+            <End Role="street" EntitySet="street" />
+            <End Role="adress" EntitySet="adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_area_adress" Association="Self.FK_area_adress">
+            <End Role="adress" EntitySet="adress" />
+            <End Role="area" EntitySet="area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_area_type_area" Association="Self.FK_area_type_area">
+            <End Role="type_area" EntitySet="type_area" />
+            <End Role="area" EntitySet="area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_employee_acess_right" Association="Self.FK_employee_acess_right">
+            <End Role="acess_right" EntitySet="acess_right" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_employee_post" Association="Self.FK_employee_post">
+            <End Role="post" EntitySet="post" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_expenses_category_expense" Association="Self.FK_expenses_category_expense">
+            <End Role="category_expense" EntitySet="category_expense" />
+            <End Role="expenses" EntitySet="expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_expenses_employee" Association="Self.FK_expenses_employee">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="expenses" EntitySet="expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_expenses_project" Association="Self.FK_expenses_project">
+            <End Role="project" EntitySet="project" />
+            <End Role="expenses" EntitySet="expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_film_crew_employee" Association="Self.FK_film_crew_employee">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="film_crew" EntitySet="film_crew" />
+          </AssociationSet>
+          <AssociationSet Name="FK_film_crew_project" Association="Self.FK_film_crew_project">
+            <End Role="project" EntitySet="project" />
+            <End Role="film_crew" EntitySet="film_crew" />
+          </AssociationSet>
+          <AssociationSet Name="FK_genre_in_project_genre" Association="Self.FK_genre_in_project_genre">
+            <End Role="genre" EntitySet="genre" />
+            <End Role="genre_in_project" EntitySet="genre_in_project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_genre_in_project_project" Association="Self.FK_genre_in_project_project">
+            <End Role="project" EntitySet="project" />
+            <End Role="genre_in_project" EntitySet="genre_in_project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_category" Association="Self.FK_project_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="project" EntitySet="project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_status_project" Association="Self.FK_project_status_project">
+            <End Role="status_project" EntitySet="status_project" />
+            <End Role="project" EntitySet="project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rental_project" Association="Self.FK_rental_project">
+            <End Role="project" EntitySet="project" />
+            <End Role="rental" EntitySet="rental" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shooting_schedule_area" Association="Self.FK_shooting_schedule_area">
+            <End Role="area" EntitySet="area" />
+            <End Role="shooting_schedule" EntitySet="shooting_schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shooting_schedule_project" Association="Self.FK_shooting_schedule_project">
+            <End Role="project" EntitySet="project" />
+            <End Role="shooting_schedule" EntitySet="shooting_schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_street_city" Association="Self.FK_street_city">
+            <End Role="city" EntitySet="city" />
+            <End Role="street" EntitySet="street" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KinoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="acess_right">
+          <Key>
+            <PropertyRef Name="login" />
+          </Key>
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="soled" Type="Binary" MaxLength="16" FixedLength="true" />
+          <NavigationProperty Name="employees" Relationship="Self.FK_employee_acess_right" FromRole="acess_right" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="adress">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Home" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id_street" Type="Int32" />
+          <NavigationProperty Name="street" Relationship="Self.FK_adress_street" FromRole="adress" ToRole="street" />
+          <NavigationProperty Name="areas" Relationship="Self.FK_area_adress" FromRole="adress" ToRole="area" />
+        </EntityType>
+        <EntityType Name="area">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_adress" Type="Int32" />
+          <Property Name="Id_type_area" Type="Int32" />
+          <Property Name="Rental_cost" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="Capacity" Type="Int32" />
+          <NavigationProperty Name="adress" Relationship="Self.FK_area_adress" FromRole="area" ToRole="adress" />
+          <NavigationProperty Name="type_area" Relationship="Self.FK_area_type_area" FromRole="area" ToRole="type_area" />
+          <NavigationProperty Name="shooting_schedule" Relationship="Self.FK_shooting_schedule_area" FromRole="area" ToRole="shooting_schedule" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="projects" Relationship="Self.FK_project_category" FromRole="category" ToRole="project" />
+        </EntityType>
+        <EntityType Name="category_expense">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="expenses" Relationship="Self.FK_expenses_category_expense" FromRole="category_expense" ToRole="expenses" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="streets" Relationship="Self.FK_street_city" FromRole="city" ToRole="street" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Second_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bet" Type="Decimal" Precision="2" Scale="1" />
+          <Property Name="Id_post" Type="Int32" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="acess_right" Relationship="Self.FK_employee_acess_right" FromRole="employee" ToRole="acess_right" />
+          <NavigationProperty Name="post" Relationship="Self.FK_employee_post" FromRole="employee" ToRole="post" />
+          <NavigationProperty Name="expenses" Relationship="Self.FK_expenses_employee" FromRole="employee" ToRole="expenses" />
+          <NavigationProperty Name="film_crew" Relationship="Self.FK_film_crew_employee" FromRole="employee" ToRole="film_crew" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="expens">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sum" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Id_project" Type="Int32" />
+          <Property Name="Id_employee" Type="Int32" />
+          <Property Name="Id_category_expense" Type="Int32" />
+          <NavigationProperty Name="category_expense" Relationship="Self.FK_expenses_category_expense" FromRole="expenses" ToRole="category_expense" />
+          <NavigationProperty Name="employee" Relationship="Self.FK_expenses_employee" FromRole="expenses" ToRole="employee" />
+          <NavigationProperty Name="project" Relationship="Self.FK_expenses_project" FromRole="expenses" ToRole="project" />
+        </EntityType>
+        <EntityType Name="film_crew">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_employee" Type="Int32" />
+          <Property Name="Id_project" Type="Int32" />
+          <NavigationProperty Name="employee" Relationship="Self.FK_film_crew_employee" FromRole="film_crew" ToRole="employee" />
+          <NavigationProperty Name="project" Relationship="Self.FK_film_crew_project" FromRole="film_crew" ToRole="project" />
+        </EntityType>
+        <EntityType Name="genre">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="genre_in_project" Relationship="Self.FK_genre_in_project_genre" FromRole="genre" ToRole="genre_in_project" />
+        </EntityType>
+        <EntityType Name="genre_in_project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_genre" Type="Int32" />
+          <Property Name="Id_project" Type="Int32" />
+          <NavigationProperty Name="genre" Relationship="Self.FK_genre_in_project_genre" FromRole="genre_in_project" ToRole="genre" />
+          <NavigationProperty Name="project" Relationship="Self.FK_genre_in_project_project" FromRole="genre_in_project" ToRole="project" />
+        </EntityType>
+        <EntityType Name="post">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="employees" Relationship="Self.FK_employee_post" FromRole="post" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Budget" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="Date_start" Type="DateTime" Precision="0" />
+          <Property Name="Date_end" Type="DateTime" Precision="0" />
+          <Property Name="Id_status_project" Type="Int32" />
+          <Property Name="Id_category" Type="Int32" />
+          <Property Name="Target_audience" Type="Int32" />
+          <NavigationProperty Name="category" Relationship="Self.FK_project_category" FromRole="project" ToRole="category" />
+          <NavigationProperty Name="expenses" Relationship="Self.FK_expenses_project" FromRole="project" ToRole="expenses" />
+          <NavigationProperty Name="film_crew" Relationship="Self.FK_film_crew_project" FromRole="project" ToRole="film_crew" />
+          <NavigationProperty Name="genre_in_project" Relationship="Self.FK_genre_in_project_project" FromRole="project" ToRole="genre_in_project" />
+          <NavigationProperty Name="status_project" Relationship="Self.FK_project_status_project" FromRole="project" ToRole="status_project" />
+          <NavigationProperty Name="rentals" Relationship="Self.FK_rental_project" FromRole="project" ToRole="rental" />
+          <NavigationProperty Name="shooting_schedule" Relationship="Self.FK_shooting_schedule_project" FromRole="project" ToRole="shooting_schedule" />
+        </EntityType>
+        <EntityType Name="rental">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_project" Type="Int32" />
+          <Property Name="Release_date" Type="DateTime" Precision="0" />
+          <Property Name="Number_of_cinemas" Type="Int32" />
+          <Property Name="Collections" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="Audience_rating" Type="Decimal" Precision="2" Scale="1" />
+          <NavigationProperty Name="project" Relationship="Self.FK_rental_project" FromRole="rental" ToRole="project" />
+        </EntityType>
+        <EntityType Name="shooting_schedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="2" />
+          <Property Name="Id_area" Type="Int32" />
+          <Property Name="Id_project" Type="Int32" />
+          <NavigationProperty Name="area" Relationship="Self.FK_shooting_schedule_area" FromRole="shooting_schedule" ToRole="area" />
+          <NavigationProperty Name="project" Relationship="Self.FK_shooting_schedule_project" FromRole="shooting_schedule" ToRole="project" />
+        </EntityType>
+        <EntityType Name="status_project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="projects" Relationship="Self.FK_project_status_project" FromRole="status_project" ToRole="project" />
+        </EntityType>
+        <EntityType Name="street">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id_city" Type="Int32" />
+          <NavigationProperty Name="adresses" Relationship="Self.FK_adress_street" FromRole="street" ToRole="adress" />
+          <NavigationProperty Name="city" Relationship="Self.FK_street_city" FromRole="street" ToRole="city" />
+        </EntityType>
+        <EntityType Name="type_area">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="areas" Relationship="Self.FK_area_type_area" FromRole="type_area" ToRole="area" />
+        </EntityType>
+        <Association Name="FK_employee_acess_right">
+          <End Role="acess_right" Type="Self.acess_right" Multiplicity="0..1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="acess_right">
+              <PropertyRef Name="login" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_adress_street">
+          <End Role="street" Type="Self.street" Multiplicity="0..1" />
+          <End Role="adress" Type="Self.adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="street">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="adress">
+              <PropertyRef Name="Id_street" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_area_adress">
+          <End Role="adress" Type="Self.adress" Multiplicity="0..1" />
+          <End Role="area" Type="Self.area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adress">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="area">
+              <PropertyRef Name="Id_adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_area_type_area">
+          <End Role="type_area" Type="Self.type_area" Multiplicity="0..1" />
+          <End Role="area" Type="Self.area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_area">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="area">
+              <PropertyRef Name="Id_type_area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shooting_schedule_area">
+          <End Role="area" Type="Self.area" Multiplicity="0..1" />
+          <End Role="shooting_schedule" Type="Self.shooting_schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="area">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="shooting_schedule">
+              <PropertyRef Name="Id_area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_category">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="project" Type="Self.project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project">
+              <PropertyRef Name="Id_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_expenses_category_expense">
+          <End Role="category_expense" Type="Self.category_expense" Multiplicity="0..1" />
+          <End Role="expenses" Type="Self.expens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category_expense">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="expenses">
+              <PropertyRef Name="Id_category_expense" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_street_city">
+          <End Role="city" Type="Self.city" Multiplicity="0..1" />
+          <End Role="street" Type="Self.street" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="street">
+              <PropertyRef Name="Id_city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_employee_post">
+          <End Role="post" Type="Self.post" Multiplicity="0..1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="post">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="Id_post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_expenses_employee">
+          <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="expenses" Type="Self.expens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="expenses">
+              <PropertyRef Name="Id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_film_crew_employee">
+          <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="film_crew" Type="Self.film_crew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="film_crew">
+              <PropertyRef Name="Id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_expenses_project">
+          <End Role="project" Type="Self.project" Multiplicity="0..1" />
+          <End Role="expenses" Type="Self.expens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="expenses">
+              <PropertyRef Name="Id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_film_crew_project">
+          <End Role="project" Type="Self.project" Multiplicity="0..1" />
+          <End Role="film_crew" Type="Self.film_crew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="film_crew">
+              <PropertyRef Name="Id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_genre_in_project_genre">
+          <End Role="genre" Type="Self.genre" Multiplicity="0..1" />
+          <End Role="genre_in_project" Type="Self.genre_in_project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genre">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="genre_in_project">
+              <PropertyRef Name="Id_genre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_genre_in_project_project">
+          <End Role="project" Type="Self.project" Multiplicity="0..1" />
+          <End Role="genre_in_project" Type="Self.genre_in_project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="genre_in_project">
+              <PropertyRef Name="Id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_project_status_project">
+          <End Role="status_project" Type="Self.status_project" Multiplicity="0..1" />
+          <End Role="project" Type="Self.project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status_project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="project">
+              <PropertyRef Name="Id_status_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rental_project">
+          <End Role="project" Type="Self.project" Multiplicity="0..1" />
+          <End Role="rental" Type="Self.rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="rental">
+              <PropertyRef Name="Id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shooting_schedule_project">
+          <End Role="project" Type="Self.project" Multiplicity="0..1" />
+          <End Role="shooting_schedule" Type="Self.shooting_schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="shooting_schedule">
+              <PropertyRef Name="Id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KinoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="acess_right" EntityType="Self.acess_right" />
+          <EntitySet Name="adresses" EntityType="Self.adress" />
+          <EntitySet Name="areas" EntityType="Self.area" />
+          <EntitySet Name="categories" EntityType="Self.category" />
+          <EntitySet Name="category_expense" EntityType="Self.category_expense" />
+          <EntitySet Name="cities" EntityType="Self.city" />
+          <EntitySet Name="employees" EntityType="Self.employee" />
+          <EntitySet Name="expenses" EntityType="Self.expens" />
+          <EntitySet Name="film_crew" EntityType="Self.film_crew" />
+          <EntitySet Name="genres" EntityType="Self.genre" />
+          <EntitySet Name="genre_in_project" EntityType="Self.genre_in_project" />
+          <EntitySet Name="posts" EntityType="Self.post" />
+          <EntitySet Name="projects" EntityType="Self.project" />
+          <EntitySet Name="rentals" EntityType="Self.rental" />
+          <EntitySet Name="shooting_schedule" EntityType="Self.shooting_schedule" />
+          <EntitySet Name="status_project" EntityType="Self.status_project" />
+          <EntitySet Name="streets" EntityType="Self.street" />
+          <EntitySet Name="type_area" EntityType="Self.type_area" />
+          <AssociationSet Name="FK_employee_acess_right" Association="Self.FK_employee_acess_right">
+            <End Role="acess_right" EntitySet="acess_right" />
+            <End Role="employee" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_adress_street" Association="Self.FK_adress_street">
+            <End Role="street" EntitySet="streets" />
+            <End Role="adress" EntitySet="adresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_area_adress" Association="Self.FK_area_adress">
+            <End Role="adress" EntitySet="adresses" />
+            <End Role="area" EntitySet="areas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_area_type_area" Association="Self.FK_area_type_area">
+            <End Role="type_area" EntitySet="type_area" />
+            <End Role="area" EntitySet="areas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shooting_schedule_area" Association="Self.FK_shooting_schedule_area">
+            <End Role="area" EntitySet="areas" />
+            <End Role="shooting_schedule" EntitySet="shooting_schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_category" Association="Self.FK_project_category">
+            <End Role="category" EntitySet="categories" />
+            <End Role="project" EntitySet="projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_expenses_category_expense" Association="Self.FK_expenses_category_expense">
+            <End Role="category_expense" EntitySet="category_expense" />
+            <End Role="expenses" EntitySet="expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_street_city" Association="Self.FK_street_city">
+            <End Role="city" EntitySet="cities" />
+            <End Role="street" EntitySet="streets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_employee_post" Association="Self.FK_employee_post">
+            <End Role="post" EntitySet="posts" />
+            <End Role="employee" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_expenses_employee" Association="Self.FK_expenses_employee">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="expenses" EntitySet="expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_film_crew_employee" Association="Self.FK_film_crew_employee">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="film_crew" EntitySet="film_crew" />
+          </AssociationSet>
+          <AssociationSet Name="FK_expenses_project" Association="Self.FK_expenses_project">
+            <End Role="project" EntitySet="projects" />
+            <End Role="expenses" EntitySet="expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_film_crew_project" Association="Self.FK_film_crew_project">
+            <End Role="project" EntitySet="projects" />
+            <End Role="film_crew" EntitySet="film_crew" />
+          </AssociationSet>
+          <AssociationSet Name="FK_genre_in_project_genre" Association="Self.FK_genre_in_project_genre">
+            <End Role="genre" EntitySet="genres" />
+            <End Role="genre_in_project" EntitySet="genre_in_project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_genre_in_project_project" Association="Self.FK_genre_in_project_project">
+            <End Role="project" EntitySet="projects" />
+            <End Role="genre_in_project" EntitySet="genre_in_project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_project_status_project" Association="Self.FK_project_status_project">
+            <End Role="status_project" EntitySet="status_project" />
+            <End Role="project" EntitySet="projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rental_project" Association="Self.FK_rental_project">
+            <End Role="project" EntitySet="projects" />
+            <End Role="rental" EntitySet="rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shooting_schedule_project" Association="Self.FK_shooting_schedule_project">
+            <End Role="project" EntitySet="projects" />
+            <End Role="shooting_schedule" EntitySet="shooting_schedule" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище KinoModelContainer" CdmEntityContainer="KinoEntities">
+          <EntitySetMapping Name="acess_right">
+            <EntityTypeMapping TypeName="KinoModel.acess_right">
+              <MappingFragment StoreEntitySet="acess_right">
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="soled" ColumnName="soled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adresses">
+            <EntityTypeMapping TypeName="KinoModel.adress">
+              <MappingFragment StoreEntitySet="adress">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Home" ColumnName="Home" />
+                <ScalarProperty Name="Id_street" ColumnName="Id_street" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="areas">
+            <EntityTypeMapping TypeName="KinoModel.area">
+              <MappingFragment StoreEntitySet="area">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_adress" ColumnName="Id_adress" />
+                <ScalarProperty Name="Id_type_area" ColumnName="Id_type_area" />
+                <ScalarProperty Name="Rental_cost" ColumnName="Rental_cost" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="KinoModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category_expense">
+            <EntityTypeMapping TypeName="KinoModel.category_expense">
+              <MappingFragment StoreEntitySet="category_expense">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cities">
+            <EntityTypeMapping TypeName="KinoModel.city">
+              <MappingFragment StoreEntitySet="city">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="KinoModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Second_name" ColumnName="Second_name" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Bet" ColumnName="Bet" />
+                <ScalarProperty Name="Id_post" ColumnName="Id_post" />
+                <ScalarProperty Name="login" ColumnName="login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="expenses">
+            <EntityTypeMapping TypeName="KinoModel.expens">
+              <MappingFragment StoreEntitySet="expenses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id_project" ColumnName="Id_project" />
+                <ScalarProperty Name="Id_employee" ColumnName="Id_employee" />
+                <ScalarProperty Name="Id_category_expense" ColumnName="Id_category_expense" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="film_crew">
+            <EntityTypeMapping TypeName="KinoModel.film_crew">
+              <MappingFragment StoreEntitySet="film_crew">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_employee" ColumnName="Id_employee" />
+                <ScalarProperty Name="Id_project" ColumnName="Id_project" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="genres">
+            <EntityTypeMapping TypeName="KinoModel.genre">
+              <MappingFragment StoreEntitySet="genre">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="genre_in_project">
+            <EntityTypeMapping TypeName="KinoModel.genre_in_project">
+              <MappingFragment StoreEntitySet="genre_in_project">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_genre" ColumnName="Id_genre" />
+                <ScalarProperty Name="Id_project" ColumnName="Id_project" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="posts">
+            <EntityTypeMapping TypeName="KinoModel.post">
+              <MappingFragment StoreEntitySet="post">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projects">
+            <EntityTypeMapping TypeName="KinoModel.project">
+              <MappingFragment StoreEntitySet="project">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="Date_start" ColumnName="Date_start" />
+                <ScalarProperty Name="Date_end" ColumnName="Date_end" />
+                <ScalarProperty Name="Id_status_project" ColumnName="Id_status_project" />
+                <ScalarProperty Name="Id_category" ColumnName="Id_category" />
+                <ScalarProperty Name="Target_audience" ColumnName="Target_audience" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rentals">
+            <EntityTypeMapping TypeName="KinoModel.rental">
+              <MappingFragment StoreEntitySet="rental">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_project" ColumnName="Id_project" />
+                <ScalarProperty Name="Release_date" ColumnName="Release_date" />
+                <ScalarProperty Name="Number_of_cinemas" ColumnName="Number_of_cinemas" />
+                <ScalarProperty Name="Collections" ColumnName="Collections" />
+                <ScalarProperty Name="Audience_rating" ColumnName="Audience_rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shooting_schedule">
+            <EntityTypeMapping TypeName="KinoModel.shooting_schedule">
+              <MappingFragment StoreEntitySet="shooting_schedule">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Id_area" ColumnName="Id_area" />
+                <ScalarProperty Name="Id_project" ColumnName="Id_project" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status_project">
+            <EntityTypeMapping TypeName="KinoModel.status_project">
+              <MappingFragment StoreEntitySet="status_project">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="streets">
+            <EntityTypeMapping TypeName="KinoModel.street">
+              <MappingFragment StoreEntitySet="street">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id_city" ColumnName="Id_city" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_area">
+            <EntityTypeMapping TypeName="KinoModel.type_area">
+              <MappingFragment StoreEntitySet="type_area">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
